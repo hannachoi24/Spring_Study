@@ -28,7 +28,7 @@ class MemoryMemberRepositoryTest {
 
         repository.save(member);
 
-        Member result = repository.findById(member.getId()).get();
+        Member result = repository.findById(member.getId()).get(); // Optional에서 값만 꺼낼때는 .get()으로 꺼낼 수 있다.
         assertThat(member).isEqualTo(result);
     }
 
