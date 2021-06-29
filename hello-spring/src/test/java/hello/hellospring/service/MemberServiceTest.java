@@ -10,9 +10,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
+    /* 변경 전
+    MemberService memberService = new MemberService();
+    // 메소드를 클리어 해주기 위해서 repository가 필요하다.
+    MemberRepository memberRepository = new MemoryMemberRepository();
+    */
 
+    /** 하지만 이렇게 되면 service에서 호출한 repository와 지금 위에서 작성한 repository는
+     서로 다른 repository라는 문제가 발생한다.
+     같은 인스턴스를 사용하려면, MemberService에서 Constructor DI를 사용해야 한다.
+     */
+
+    // 변경 후
     MemberService memberService;
     MemoryMemberRepository memberRepository;
+
 
     // 각 테스트를 실행하기 전에
     @BeforeEach
@@ -53,13 +65,13 @@ class MemberServiceTest {
         member1.setName("spring");
 
         Member member2 = new Member();
-        member2.setName("spring");
+        member2.setName("spring"); // member1의 이름과 같에 설정
 
         // when
         memberService.join(member1);
         assertThrows(IllegalStateException.class, () -> memberService.join(member2));
 
-        /*  // shift + Cmd + / = comment
+        /*  // Ctrl + / = comment
         try {
             memberService.join(member2);    // 예외 발생
             fail("예외가 발생해야 합니다.");
