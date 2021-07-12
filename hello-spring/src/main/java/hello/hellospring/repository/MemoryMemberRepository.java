@@ -42,6 +42,10 @@ public class MemoryMemberRepository implements MemberRepository{
         // store.values() == member
         // member를 리스트로 반환해준다.
     }
+
+    public void clearStore(){
+        store.clear();
+    }
 }
 /*
     어떻게 동작하는지 검증하기 위해서 테스트 케이스를 작성해야 한다.
