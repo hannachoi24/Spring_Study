@@ -22,7 +22,9 @@ public class HelloController {
     
     @GetMapping("hello-mvc")
     public String helloMvc(@RequestParam("name") String name, Model model) {
-        model.addAttribute("name", name);
+        model.addAttribute("name", name); // 앞의 name이 key, 뒤의 name은 parameter로 넘어온 값
+
+
         return "hello-template"; // templates에 hello-template.html을 찾아서 렌더링
     }
 
@@ -53,7 +55,7 @@ public class HelloController {
     public Hello helloApi(@RequestParam("name") String name) {
         Hello hello = new Hello();
         hello.setName(name);
-        return hello; // key-value 구조로 나옴.
+        return hello; // key-value (Json)구조로 나옴.
     }
 
     static class Hello {
