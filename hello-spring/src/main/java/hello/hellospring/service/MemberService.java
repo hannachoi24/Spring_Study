@@ -3,20 +3,33 @@ package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
 // Ctrl + Shift + T 누르면 테스트 파일을 바로 생성 가능
     private final MemberRepository memberRepository;
 
+    @Autowired
     // Test Case에서 Repository를 같이 관리하기 위함 = Dependency Injection(DI)
     public MemberService(MemberRepository memberRepository) {
+
         this.memberRepository = memberRepository;
     }
 
     /**
+     Spring이 MemberService를 생성을 할 때 Service 어노테이션(@Service)을 보고 Spring 컨테이너에 등록을 하면서
+     @Autowired 부분 생성자를 호출 그런데 이때 @Autowired 어노테이션을 보고 MemberRepository가 필요하다는 것을 알고
+     Spring 컨테이너에 MemberRepository를 넣어줌.
+     MemoryMemberRepository를 Service에 주입(DI)
+     그러면 helloController - memberService - memberRepository 연결 성공
+     */
+
+    /*
      * 이렇게 MemberRepository 변수 = new MemoryMemberRepository();로 선언한 이유?
      * 1) MemberRepository 인터페이스의 제약을 따르겠다는 의도
      * 2) 사용하는 코드가 MemberRepository 인터페이스 제약을 따르기 때문에 향후 변경시 사용코드를 변경하지 않아도 된다.
