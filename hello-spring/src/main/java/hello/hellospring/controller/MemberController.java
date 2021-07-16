@@ -13,7 +13,6 @@ public class MemberController { // Controller 어노테이션을 보고 spring�
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
-
 }
 
 /* 생성자로 등록한 방법
