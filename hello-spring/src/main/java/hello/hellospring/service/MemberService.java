@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-
+// Ctrl + Shift + T 누르면 테스트 파일을 바로 생성 가능
     private final MemberRepository memberRepository;
 
     // Test Case에서 Repository를 같이 관리하기 위함 = Dependency Injection(DI)
@@ -25,7 +25,9 @@ public class MemberService {
      * 선언이 되어 있다면, 변경 시점에 상당히 고민해야 하지만, MemberRepository 변수 = new MemoryMemberRepository()으로 선언이 되어 있다면
      * 편안하게 선언부를 변경할 수 있다.
      */
-
+    
+    // Ctrl + Alt + V -> 리턴 타입 자동 작성
+    
     // 회원 가입
    public Long join(Member member){
        
@@ -34,7 +36,9 @@ public class MemberService {
        return member.getId();
 
     }
-    
+
+    // Ctrl + Alt + Shift + T -> Extract Method 클릭 후 validateDuplicateMember 로 함수명을 바꾸면 자동으로 아래 코드처럼 변환된다.
+
     private void validateDuplicateMember(Member member){
         // 같은 이름이 있는 중복 회원X
         // 이때 값은 optional이다.
