@@ -1,8 +1,11 @@
 package hello.hellospring.controller;
 
+import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MemberController { // Controller 어노테이션을 보고 spring이 뜰 때 MemberController 객체를 생성해 넣어줌 그리고 spring이 관리함
@@ -12,6 +15,21 @@ public class MemberController { // Controller 어노테이션을 보고 spring�
     @Autowired // @Autowired가 있으면 memberService를 Spring이 Spring 컨테이너에 있는 MemberService와 연결시켜 준다.
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+    }
+
+    @GetMapping("/members/new")
+    public String createForm() {
+        return "members/createMemberForm"; // viewresolver를 통해 선택됨
+    }
+
+    @PostMapping("/members/new")
+    public String create(MemberForm form) { // MemberForm의 name에 사용자가 입력한 name 값이 들어옴
+        Member member = new Member();
+        member.setName(form.getName());
+        
+        memberService.join(member);
+        
+        return  "redirect:/"; // 회원 가입이 끝났으면 홈화면으로 이동
     }
 }
 
