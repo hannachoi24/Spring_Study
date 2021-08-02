@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @SpringBootTest
 @Transactional  //테스트를 실행할 때 트랜잭션을 실행하고 DB에 데이터를 insert 쿼리로 넣은 다음에 테스트가 끝나면 롤백해준다.
         // 테스트를 위해 DB에 넣었던 데이터를 깔끔하게 반영 안 되게끔 해준다.
-        // 따라서 다음 테스트를 반복해서 사용할 수 있다.
+        // 따라서 다음 테스트에 영향을 주지 않고 반복해서 사용할 수 있다.
 class MemberServiceIntegrationTest {
 
     @Autowired MemberService memberService;
