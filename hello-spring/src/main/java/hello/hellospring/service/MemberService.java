@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service
 public class MemberService {
 // Ctrl + Shift + T 누르면 테스트 파일을 바로 생성 가능
     private final MemberRepository memberRepository;
