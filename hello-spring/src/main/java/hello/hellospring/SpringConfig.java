@@ -41,6 +41,7 @@ public class SpringConfig {
 
     @Autowired
     public SpringConfig(MemberRepository memberRepository) {
+
         this.memberRepository = memberRepository;
     } // 주입을 받아서
 

@@ -9,7 +9,6 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Lon
 
     @Override
     Optional<Member> findByName(String name);
-
     // JpaRepository를 받고 있으면 SpringDataJpaMemberRepository이 구현체를 자동으로 만들어준다.
     // 즉, Spring Bean에 자동으로 등록한다.
 }
