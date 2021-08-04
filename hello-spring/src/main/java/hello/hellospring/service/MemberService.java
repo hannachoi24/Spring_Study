@@ -10,8 +10,9 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Transactional
+
 //@Service
+@Transactional // JPA 사용을 위해 필요
 public class MemberService {
 // Ctrl + Shift + T 누르면 테스트 파일을 바로 생성 가능
     private final MemberRepository memberRepository;
@@ -49,11 +50,9 @@ public class MemberService {
        validateDuplicateMember(member); // 중복 회원 검증
        memberRepository.save(member);
        return member.getId();
-
     }
 
     // Ctrl + Alt + Shift + T -> Extract Method 클릭 후 validateDuplicateMember 로 함수명을 바꾸면 자동으로 아래 코드처럼 변환된다.
-
     private void validateDuplicateMember(Member member){
         // 같은 이름이 있는 중복 회원X
         // 이때 값은 optional이다.
